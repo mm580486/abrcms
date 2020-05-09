@@ -1,0 +1,17 @@
+<section class='container'>
+    <div class='login-card'>
+
+            <div class='logo-wrapper'>
+                <%= AbrFormBuilder.logo_image() %>
+            </div>
+
+<% unless flash[:alert].nil? || flash[:alert].blank? %>
+            <div class='alert alert-info'>
+                <p><%= flash[:alert] %></p>
+            </div>
+<% end %>
+            <%= AbrFormBuilder.login_form(@form_auth_token) %>
+            <%= link_to t('form.forgot_password'),lostpassword_path %>
+            <hr>
+    </div>
+</section>

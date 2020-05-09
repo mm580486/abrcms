@@ -1,0 +1,35 @@
+// Place all the styles related to the admin/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.controller-sessions.action-login {
+    .login-card {
+        -webkit-animation-name: stretch;
+        animation-name: stretch;
+        -webkit-animation-duration: 1.3s;
+        animation-duration: 1.3s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-delay: 0;
+        animation-delay: 0;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -webkit-animation-fill-mode: none;
+        animation-fill-mode: none;
+        -webkit-animation-play-state: running;
+        animation-play-state: running;
+        width: 320px;
+        padding: 8% 0 0;
+        margin: auto;
+        margin-top: 20px;
+        padding: 26px 24px 46px;
+        background: #fff;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .13);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .13);
+        .logo-image {
+            display: block;
+            margin: auto;
+        }
+    }
+}

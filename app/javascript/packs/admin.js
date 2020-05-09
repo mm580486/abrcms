@@ -1,0 +1,5 @@
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require('jquery').start()
+require('packs/admin/menu.js').start()

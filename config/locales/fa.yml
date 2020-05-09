@@ -1,0 +1,10 @@
+fa:
+  hello: "سلام دنیا"
+  abrcms: 'AbrCMS'
+  form:
+    login: 'ورود'
+    register: 'ثبت نام'
+    email: 'ایمیل'
+    password: 'رمز عبور'
+    signup_msg: 'حساب کاربری ندارید‌ ؟ پس ثبت نام کنید'
+    

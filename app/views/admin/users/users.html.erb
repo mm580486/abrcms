@@ -1,0 +1,7 @@
+<section class='d-block'>
+<h1><%= I18n.t('menu.users.users') %>
+<%= link_to I18n.t('menu.users.new'), admin_users_new_user_path,class: 'btn btn-primanry page-title-action' %>
+</h1>
+
+    <%= AbrUser.users(@users) %>
+</section>

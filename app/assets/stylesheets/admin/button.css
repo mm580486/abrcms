@@ -1,0 +1,141 @@
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn,
+.navbar .navbar-nav>a.btn {
+    border-width: 2px;
+    font-weight: 400;
+    font-size: .8571em;
+    line-height: 1.35em;
+    margin: 10px 1px;
+    border: none;
+    border-radius: .1875rem;
+    padding: 11px 22px;
+    cursor: pointer;
+    background-color: #888;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #4834d4;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #18ce0f;
+    color: #fff;
+}
+
+.btn-info {
+    background-color: #2ca8ff;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #ff3636;
+    color: #fff;
+}
+
+.btn-round {
+    border-width: 1px;
+    border-radius: 30px!important;
+    padding: 11px 23px;
+}
+
+.btn:not(.btn-icon) i,
+.navbar .navbar-nav>a.btn:not(.btn-icon) i {
+    position: relative;
+    top: 1px;
+}
+
+.btn.btn-icon,
+.navbar .navbar-nav>a.btn.btn-icon {
+    height: 2.375rem;
+    min-width: 2.375rem;
+    width: 2.375rem;
+    padding: 0;
+    font-size: .9375rem;
+    overflow: hidden;
+    position: relative;
+    line-height: normal;
+}
+
+.btn-sm {
+    font-size: 14px;
+    border-radius: .1875rem;
+    padding: 5px 15px;
+}
+
+.btn-lg {
+    font-size: 1em;
+    border-radius: .25rem;
+    padding: 15px 48px;
+}
+
+.btn.disabled,
+.btn.disabled.active,
+.btn.disabled.focus,
+.btn.disabled:active,
+.btn.disabled:focus,
+.btn.disabled:hover,
+.btn:disabled,
+.btn:disabled.active,
+.btn:disabled.focus,
+.btn:disabled:active,
+.btn:disabled:focus,
+.btn:disabled:hover,
+.btn[disabled],
+.btn[disabled].active,
+.btn[disabled].focus,
+.btn[disabled]:active,
+.btn[disabled]:focus,
+.btn[disabled]:hover,
+.navbar .navbar-nav>a.btn.disabled,
+.navbar .navbar-nav>a.btn.disabled.active,
+.navbar .navbar-nav>a.btn.disabled.focus,
+.navbar .navbar-nav>a.btn.disabled:active,
+.navbar .navbar-nav>a.btn.disabled:focus,
+.navbar .navbar-nav>a.btn.disabled:hover,
+.navbar .navbar-nav>a.btn:disabled,
+.navbar .navbar-nav>a.btn:disabled.active,
+.navbar .navbar-nav>a.btn:disabled.focus,
+.navbar .navbar-nav>a.btn:disabled:active,
+.navbar .navbar-nav>a.btn:disabled:focus,
+.navbar .navbar-nav>a.btn:disabled:hover,
+.navbar .navbar-nav>a.btn[disabled],
+.navbar .navbar-nav>a.btn[disabled].active,
+.navbar .navbar-nav>a.btn[disabled].focus,
+.navbar .navbar-nav>a.btn[disabled]:active,
+.navbar .navbar-nav>a.btn[disabled]:focus,
+.navbar .navbar-nav>a.btn[disabled]:hover,
+fieldset[disabled] .btn,
+fieldset[disabled] .btn.active,
+fieldset[disabled] .btn.focus,
+fieldset[disabled] .btn:active,
+fieldset[disabled] .btn:focus,
+fieldset[disabled] .btn:hover,
+fieldset[disabled] .navbar .navbar-nav>a.btn,
+fieldset[disabled] .navbar .navbar-nav>a.btn.active,
+fieldset[disabled] .navbar .navbar-nav>a.btn.focus,
+fieldset[disabled] .navbar .navbar-nav>a.btn:active,
+fieldset[disabled] .navbar .navbar-nav>a.btn:focus,
+fieldset[disabled] .navbar .navbar-nav>a.btn:hover {
+    background-color: #888;
+    border-color: #888;
+}

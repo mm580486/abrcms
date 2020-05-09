@@ -1,0 +1,198 @@
+
+<div id="wpwrap">
+
+<div id="adminmenumain" role="navigation" aria-label="Main menu">
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu">
+	
+    <% AbrAdminMenu.getMenus.each do |menu| %>
+    <li class="wp-first-item <%= 'wp-has-submenu' unless menu[:sub].nil? %>
+    <%=  menu[:sub].each do |sub| %>
+
+   <% if current_class?(sub[:path]) %>
+        wp-has-current-submenu wp-menu-open active-is-<%= sub[:id] %>
+        <% break %>
+<% end %>
+
+   <% end %> menu-top menu-top-first menu-icon-dashboard menu-top-first menu-top-last menu-index" id='<%= menu[:id] %>'>
+        <a href="<%= menu[:path] %>" class="wp-first-item <%= 'wp-has-submenu' unless menu[:sub].nil? %> 
+        
+    <%=  menu[:sub].each do |sub| %>
+   <% if current_class?(sub[:path]) %>
+
+        wp-has-current-submenu wp-menu-open
+              <% break %>
+<% end %>
+
+   <% end %>
+        
+         menu-top menu-top-first menu-icon-dashboard menu-top-first menu-top-last" aria-haspopup="false">
+       
+
+        <div class="wp-menu-arrow"><div>
+        </div>
+
+        </div>
+        <div class="wp-menu-image <%= menu[:icon] %>">
+        <br>
+        </div>
+        <div class="wp-menu-name"><%= menu[:name] %></div>
+        </a>
+        <% unless menu[:sub].nil? %>
+            <ul class="wp-submenu wp-submenu-wrap">
+                <li class="wp-submenu-head" aria-hidden="true"><%= menu[:name] %></li>
+                <% menu[:sub].each do |submenu| %>
+                   <li class='<%= 'current' if current_class?(submenu[:path]) %>'><a href="<%= submenu[:path] %>" class='<%= 'current' if current_class?(submenu[:path]) %>'><%= submenu[:name] %></a>
+                <% end %>
+                </li>
+            </ul>
+        <% end %>
+    </li>
+    <% end %>
+
+
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-post"><br></div><div class="wp-menu-name">Posts</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Posts</li><li class="wp-first-item"><a href="#" class="wp-first-item">All Posts</a></li><li><a href="#">Add New</a></li><li><a href="#">Categories</a></li><li><a href="#">Tags</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" id="menu-media">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-media"><br></div><div class="wp-menu-name">Media</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Media</li><li class="wp-first-item"><a href="#" class="wp-first-item">Library</a></li><li><a href="#">Add New</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" id="menu-pages">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-page"><br></div><div class="wp-menu-name">Pages</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Pages</li><li class="wp-first-item"><a href="#" class="wp-first-item">All Pages</a></li><li><a href="#">Add New</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments" id="menu-comments">
+	<a href="#" class="wp-not-current-submenu menu-top menu-icon-comments"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-comments"><br></div><div class="wp-menu-name">Comments <span class="awaiting-mod count-0"><span class="pending-count">0</span></span></div></a></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" id="menu-appearance">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-appearance"><br></div><div class="wp-menu-name">Appearance</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Appearance</li><li class="wp-first-item"><a href="#" class="wp-first-item">Themes</a></li><li class="hide-if-no-customize"><a href="#" class="hide-if-no-customize">Customize</a></li><li><a href="#">Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" id="menu-plugins">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-plugins"><br></div><div class="wp-menu-name">Plugins</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Plugins</li><li class="wp-first-item"><a href="#" class="wp-first-item">Installed Plugins</a></li><li><a href="#">Add New</a></li><li><a href="#">Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" id="menu-users">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-users"><br></div><div class="wp-menu-name">Users</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Users</li><li class="wp-first-item"><a href="#" class="wp-first-item">All Users</a></li><li><a href="#">Add New</a></li><li><a href="#">Your Profile</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-tools"><br></div><div class="wp-menu-name">Tools</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Tools</li><li class="wp-first-item"><a href="#" class="wp-first-item">Available Tools</a></li><li><a href="#">Import</a></li><li><a href="#">Export</a></li><li><a href="#">Scheduled Actions</a></li><li><a href="#">Export Personal Data</a></li><li><a href="#">Erase Personal Data</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" id="menu-settings">
+	<a href="#" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class="wp-menu-image dashicons-before dashicons-admin-settings"><br></div><div class="wp-menu-name">Settings </div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Settings </li><li class="wp-first-item"><a href="#" class="wp-first-item">General</a></li><li><a href="#">Writing</a></li><li><a href="#">Reading</a></li><li><a href="#">Discussion</a></li><li><a href="#">Media</a></li><li><a href="#">Permalinks</a></li><li><a href="#">Privacy </a></li></ul></li><li id="collapse-menu" class="hide-if-no-js"><button type="button" id="collapse-button" aria-label="Collapse Main menu" aria-expanded="true"><span class="collapse-button-icon" aria-hidden="true"></span><span class="collapse-button-label">Collapse menu</span></button></li></ul>
+</div>
+</div>
+<div id="wpcontent">
+
+		<div id="wpadminbar" class="">
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+				<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+		<li id="wp-admin-bar-menu-toggle"><a class="ab-item" href="#" aria-expanded="false"><span class="ab-icon"></span><span class="screen-reader-text">Menu</span></a>		</li>
+		<li id="wp-admin-bar-wp-logo" class="menupop"><a class="ab-item" aria-haspopup="true" href="#"><span class="ab-icon"></span><span class="screen-reader-text">About WordPress</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-wp-logo-default" class="ab-submenu">
+		<li id="wp-admin-bar-about"><a class="ab-item" href="#">About WordPress</a>		</li></ul><ul id="wp-admin-bar-wp-logo-external" class="ab-sub-secondary ab-submenu">
+		<li id="wp-admin-bar-wporg"><a class="ab-item" href="#">WordPress.org</a>		</li>
+		<li id="wp-admin-bar-documentation"><a class="ab-item" href="#">Documentation</a>		</li>
+		<li id="wp-admin-bar-support-forums"><a class="ab-item" href="#">Support Forums</a>		</li>
+		<li id="wp-admin-bar-feedback"><a class="ab-item" href="#">Feedback</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-site-name" class="menupop"><a class="ab-item" aria-haspopup="true" href="#">WordPress</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-site-name-default" class="ab-submenu">
+		<li id="wp-admin-bar-view-site"><a class="ab-item" href="#">Visit Site</a>		</li>
+		<li id="wp-admin-bar-view-store"><a class="ab-item" href="#">Visit Store</a>		</li>
+		<li id="wp-admin-bar-calyx-docs"><a class="ab-item" href="#" target="_blank">View Docs</a>		</li></ul></div>		</li>
+		
+		<li id="wp-admin-bar-comments"><a class="ab-item" href="#"><span class="ab-icon"></span><span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span><span class="screen-reader-text">0 comments awaiting moderation</span></a>		</li>
+		<li id="wp-admin-bar-new-content" class="menupop"><a class="ab-item" aria-haspopup="true" href="#"><span class="ab-icon"></span>
+		<span class="ab-label"><%= I18n.t('menu.new') %></span>
+		
+		</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+		<li id="wp-admin-bar-new-post"><a class="ab-item" href="#">Post</a>		</li>
+		<li id="wp-admin-bar-new-media"><a class="ab-item" href="#">Media</a>		</li>
+		<li id="wp-admin-bar-new-page"><a class="ab-item" href="#">Page</a>		</li>
+		<li id="wp-admin-bar-new-product"><a class="ab-item" href="#">Product</a>		</li>
+		<li id="wp-admin-bar-new-shop_order"><a class="ab-item" href="#">Order</a>		</li>
+		<li id="wp-admin-bar-new-shop_coupon"><a class="ab-item" href="#">Coupon</a>		</li>
+		<li id="wp-admin-bar-new-shop_subscription"><a class="ab-item" href="#">Subscription</a>		</li>
+		<li id="wp-admin-bar-new-sample"><a class="ab-item" href="#">Sample</a>		</li>
+		<li id="wp-admin-bar-new-user"><a class="ab-item" href="#">User</a>		</li></ul></div>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+		
+		
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar">
+		<a class="ab-item" aria-haspopup="true" href="#"><%= I18n.t('hello') %> <span class="display-name"><%= @current_user.display_name %></span><img alt="" src="<%= AbrUser.avatar_url(@current_user.email,26) %>" srcset="<%= AbrUser.avatar_url(@current_user.email,52) %>" class="avatar avatar-26 photo" height="26" width="26"></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-user-actions" class="ab-submenu">
+		<li id="wp-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="#">
+		<img alt="" src="<%= AbrUser.avatar_url(@current_user.email,64) %>" srcset="<%= AbrUser.avatar_url(@current_user.email,128) %>" class="avatar avatar-64 photo" height="64" width="64"><span class="display-name">CodePen</span></a>		</li>
+		<li id="wp-admin-bar-edit-profile"><a class="ab-item" href="#">Edit My Profile</a>		</li>
+		<li id="wp-admin-bar-logout"><a class="ab-item" href="<%= logout_path %>"><%= I18n.t('menu.logout') %></a>		</li></ul></div>		</li>
+		</ul>			</div>
+						<a class="screen-reader-shortcut" href="<%= logout_path %>"><%= I18n.t('menu.logout') %></a>
+					</div>
+
+		
+<div id="wpbody" role="main">
+
+<div id="wpbody-content" aria-label="Main content" tabindex="0" style="overflow: hidden;">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#" aria-controls="tab-panel-overview">
+									Overview								</a>
+							</li>
+						
+							<li id="tab-link-help-navigation">
+								<a href="#" aria-controls="tab-panel-help-navigation">
+									Navigation								</a>
+							</li>
+						
+							<li id="tab-link-help-layout">
+								<a href="#" aria-controls="tab-panel-help-layout">
+									Layout								</a>
+							</li>
+						
+							<li id="tab-link-help-content">
+								<a href="#" aria-controls="tab-panel-help-content">
+									Content								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>For more information:</strong></p><p><a href="#">Documentation on Dashboard</a></p><p><a href="#">Support Forums</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab above the screen title.</p>							</div>
+						
+							<div id="tab-panel-help-navigation" class="help-tab-content">
+								<p>The left-hand navigation menu provides links to all of the WordPress administration screens, with submenu items displayed on hover. You can minimize this menu to a narrow icon strip by clicking on the Collapse Menu arrow at the bottom.</p><p>Links in the Toolbar at the top of the screen connect your dashboard and the front end of your site, and provide access to your profile and helpful WordPress information.</p>							</div>
+						
+							<div id="tab-panel-help-layout" class="help-tab-content">
+								<p>You can use the following controls to arrange your Dashboard screen to suit your workflow. This is true on most other administration screens as well.</p><p><strong>Screen Options</strong> — Use the Screen Options tab to choose which Dashboard boxes to show.</p><p><strong>Drag and Drop</strong> — To rearrange the boxes, drag and drop by clicking on the title bar of the selected box and releasing when you see a gray dotted-line rectangle appear in the location you want to place the box.</p><p><strong>Box Controls</strong> — Click the title bar of the box to expand or collapse it. Some boxes added by plugins may have configurable content, and will show a “Configure” link in the title bar if you hover over it.</p>							</div>
+						
+							<div id="tab-panel-help-content" class="help-tab-content">
+								<p>The boxes on your Dashboard screen are:</p><p><strong>At A Glance</strong> — Displays a summary of the content on your site and identifies which theme and version of WordPress you are using.</p><p><strong>Activity</strong> — Shows the upcoming scheduled posts, recently published posts, and the most recent comments on your posts and allows you to moderate them.</p><p><strong>Quick Draft</strong> — Allows you to create a new post and save it as a draft. Also displays links to the 5 most recent draft posts you've started.</p><p><strong>WordPress News</strong> — Latest news from the official WordPress project, the <a href="#">WordPress Planet</a>, and popular plugins.</p><p><strong>Welcome</strong> — Shows links for some of the most common tasks when setting up a new site.</p>							</div>
+											</div>
+				</div>
+			</div>
+		<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Screen Options Tab">
+<form id="adv-settings" method="post">
+		<fieldset class="metabox-prefs">
+		<legend>Boxes</legend>
+		<label for="dashboard_right_now-hide"><input class="hide-postbox-tog" name="dashboard_right_now-hide" type="checkbox" id="dashboard_right_now-hide" value="dashboard_right_now" checked="checked">At a Glance</label><label for="dashboard_activity-hide"><input class="hide-postbox-tog" name="dashboard_activity-hide" type="checkbox" id="dashboard_activity-hide" value="dashboard_activity" checked="checked">Activity</label><label for="cssllc_lightswitches-announcements-hide"><input class="hide-postbox-tog" name="cssllc_lightswitches-announcements-hide" type="checkbox" id="cssllc_lightswitches-announcements-hide" value="cssllc_lightswitches-announcements" checked="checked">Announcements<span style="font-weight: 100; color: #999;"> — Light Switches</span></label><label for="cssllc_lightswitches-second-panel-hide"><input class="hide-postbox-tog" name="cssllc_lightswitches-second-panel-hide" type="checkbox" id="cssllc_lightswitches-second-panel-hide" value="cssllc_lightswitches-second-panel" checked="checked">Second Panel<span style="font-weight: 100; color: #999;"> — Light Switches</span></label><label for="cssllc_lightswitches-uncategorized-hide"><input class="hide-postbox-tog" name="cssllc_lightswitches-uncategorized-hide" type="checkbox" id="cssllc_lightswitches-uncategorized-hide" value="cssllc_lightswitches-uncategorized" checked="checked">Uncategorized<span style="font-weight: 100; color: #999;"> — Light Switches</span></label><label for="woocommerce_dashboard_recent_reviews-hide"><input class="hide-postbox-tog" name="woocommerce_dashboard_recent_reviews-hide" type="checkbox" id="woocommerce_dashboard_recent_reviews-hide" value="woocommerce_dashboard_recent_reviews" checked="checked">WooCommerce recent reviews</label><label for="woocommerce_dashboard_status-hide"><input class="hide-postbox-tog" name="woocommerce_dashboard_status-hide" type="checkbox" id="woocommerce_dashboard_status-hide" value="woocommerce_dashboard_status" checked="checked">WooCommerce status</label><label for="dashboard_quick_press-hide"><input class="hide-postbox-tog" name="dashboard_quick_press-hide" type="checkbox" id="dashboard_quick_press-hide" value="dashboard_quick_press" checked="checked"><span class="hide-if-no-js">Quick Draft</span> <span class="hide-if-js">Your Recent Drafts</span></label><label for="dashboard_primary-hide"><input class="hide-postbox-tog" name="dashboard_primary-hide" type="checkbox" id="dashboard_primary-hide" value="dashboard_primary" checked="checked">WordPress Events and News</label><label for="wp_welcome_panel-hide"><input type="checkbox" id="wp_welcome_panel-hide">Welcome</label>
+<label for="wp_try_gutenberg_panel-hide"><input type="checkbox" id="wp_try_gutenberg_panel-hide">New Editor</label>
+		</fieldset>
+		
+<input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="2784d8a363">
+</form>
+</div>		</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<button type="button" id="contextual-help-link" class="button show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">Help</button>
+			</div>
+					<div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<button type="button" id="show-settings-link" class="button show-settings" aria-controls="screen-options-wrap" aria-expanded="false">Screen Options</button>
+			</div>
+				</div>

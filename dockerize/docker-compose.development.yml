@@ -1,0 +1,107 @@
+version: '3'
+networks:
+  abrcms-network:
+    driver: bridge
+services:
+  postgres:
+    image: 'postgres:10.3-alpine'
+    restart: always
+    container_name: abrcms-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: Microlab125462168408577
+      POSTGRES_USER: postgres
+      POSTGRES_DB: abrcms
+      PGHOST: /var/run/postgresql
+      MAX_CONNECTIONS: 10
+      MAX_WAL_SENDERS: 5
+      PG_MODE: primary
+    volumes:
+      - ~/passion/database/postgres:/var/lib/postgresql/data
+    env_file:
+      - '.development.env'
+    networks: 
+      - abrcms-network
+  redis:
+    image: bitnami/redis
+    restart: always
+    env_file:
+      - '.development.env'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks: 
+      abrcms-network:
+  redis-cache:
+    image: bitnami/redis
+    restart: always
+    env_file:
+      - '.development.env'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks: 
+      abrcms-network:
+  backend1:
+    build:
+      context: ../
+      dockerfile: ./dockerize/Dockerfile.development
+      args:
+        RAILS_ENV: development
+    container_name: abrcms_backend_n_1
+    command: bundle exec puma -C config/puma.rb -p 1515
+    environment:
+      RAILS_ENV: development
+      RAILS_MASTER_KEY: 'd3f2e34c330383a8'
+      SECRET_KEY_BASE: 'd3f2e34c330383a8'
+    networks: 
+      abrcms-network:
+    ports:
+      - 1515:1515
+    volumes:
+      - ../app:/app/back/abrcms/BE/app
+      - ../config:/app/back/abrcms/BE/config
+      - ../db:/app/back/abrcms/BE/db
+      - ../public:/app/back/abrcms/BE/public
+      - ../lib:/app/back/abrcms/BE/lib
+      - ../bin:/app/back/abrcms/BE/bin
+      - ../storage:/app/back/abrcms/BE/storage
+      - ../package.json:/app/back/abrcms/BE/package.json
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    links: 
+      - postgres
+      - redis
+    env_file:
+      - '.development.env'
+  cron_job:
+    build: 
+      context: ../
+      dockerfile: ./dockerize/Dockerfile.development
+    command: cron -f
+    depends_on:
+      - postgres
+    restart: always
+  sidekiq:
+        build:
+          context: ../
+          dockerfile: ./dockerize/Dockerfile.development
+          args:
+            RAILS_ENV: development
+            JOB_WORKER_URL: redis://redis:6379/0
+        env_file:
+          - '.development.env'
+        environment:
+          RAILS_MASTER_KEY: 'd3f2e34c330383a8'
+          SECRET_KEY_BASE: 'd3f2e34c330383a8'
+        links:
+          - backend1
+          - redis
+        depends_on:
+          - backend1
+          - redis
+        command: bundle exec sidekiq -e development -L log/sidekiq.log
+        restart: always
+        networks: 
+          abrcms-network:

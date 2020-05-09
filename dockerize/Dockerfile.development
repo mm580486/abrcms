@@ -1,0 +1,24 @@
+FROM ruby:2.6.1
+LABEL maintainer="Mohammad Mahmoodi <mm580486@gmail.com>"
+# Install packages for building ruby
+CMD curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+CMD echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -y && apt upgrade -y
+RUN apt-get update -qq && apt-get install -y cron apt-transport-https build-essential libpq-dev nodejs ruby-dev
+RUN apt-get install -y postgresql postgresql-contrib nano
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y nodejs
+RUN apt-get update -y 
+RUN apt install -y --no-install-recommends yarn
+ENV RAILS_ROOT /app/back/abrcms/BE
+ENV RAILS_ENV development
+ENV ENABLE_COMPRESSION 1
+RUN mkdir -p $RAILS_ROOT
+WORKDIR $RAILS_ROOT
+ADD Gemfile ./Gemfile
+COPY . .
+RUN bundle install --no-deployment --redownload
+CMD rails db:migrate RAILS_ENV=development
+CMD ["bundle", "exec", "rails", "db:migrate", "RAILS_ENV=development"]
+CMD bundle exec whenever
+ENV PORT 1515

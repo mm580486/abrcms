@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Abrcms</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class='controller-<%= controller_name %> action-<%= action_name %>' direction='rtl'>
+
+	
+	
+
+	
+<%= render('layouts/admin_header') unless @no_layout %>
+<div class="wrap">
+
+<% flash.each do |key, value| %>
+  <% unless key == 'errors' %>
+  <%= content_tag :div, content_tag(:p,value), class: "alert alert-#{key}" %>
+<% else %>
+<div class='alert alert-warning alert-errors'>
+<ul>
+  <% value.each do |e| %>
+    <li><%= e %></li>
+  <% end %>
+  </ul>
+</div>
+
+<% end %>
+<% end %>
+
+
+    <%= yield %>
+</div>
+<%= render('layouts/admin_footer') unless @no_layout %>
+
+
+
+  </body>
+</html>

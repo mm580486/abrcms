@@ -1,0 +1,101 @@
+@font-face {
+    font-family: "is";
+    src: url("/fonts/is.woff2") format("woff2"), url("/fonts/is.woff") format("woff"), url("/fonts/is.ttf") format("ttf");
+}
+
+body[direction=rtl] {
+    direction: rtl;
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    input,
+    body,
+    html,
+    div,
+    button,
+    span {
+        font-family: 'is', is;
+    }
+    label {
+        display: block;
+        text-align: right;
+    }
+    input[type=password],
+    input[type=url],
+    input.ltr {
+        text-align: left;
+        direction: ltr;
+        ;
+    }
+    #adminmenuwrap {
+        float: right;
+    }
+    #adminmenu div.wp-menu-image {
+        float: right;
+    }
+    #collapse-button .collapse-button-icon,
+    #collapse-button .collapse-button-label {
+        left: unset;
+        right: 0;
+    }
+    #collapse-button .collapse-button-label {
+        padding: 0 36px 0 0;
+    }
+    #wpcontent,
+    #wpfooter {
+        margin-left: 0;
+        margin-right: 160px;
+    }
+    ul#adminmenu a.wp-has-current-submenu:after,
+    ul#adminmenu>li.current>a.current:after {
+        right: unset;
+        left: 0;
+        border: 8px solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-left-color: #f1f1f1;
+        top: 50%;
+        margin-top: -8px;
+    }
+    .wp-submenu-wrap {
+        right: 160px;
+        left: unset;
+    }
+    #wpadminbar .quicklinks ul {
+        float: right;
+        transform: rotate(180deg);
+        li {
+            transform: rotate(-180deg);
+        }
+    }
+    #wp-admin-bar-top-secondary {
+        float: left !important;
+    }
+    #wpadminbar .quicklinks ul {
+        text-align: right;
+    }
+    #wpadminbar #wp-admin-bar-my-account.with-avatar #wp-admin-bar-user-actions>li {
+        margin-right: 88px;
+        margin-left: unset;
+    }
+    #wpadminbar .ab-top-secondary .menupop .ab-sub-wrapper {
+        left: auto !important;
+        right: 0 !important;
+    }
+    table {
+        text-align: right;
+        td,
+        th {
+            text-align: right;
+        }
+    }
+}

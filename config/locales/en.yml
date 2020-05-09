@@ -1,0 +1,62 @@
+en:
+  hello: "سلام"
+  abrcms: 'AbrCMS'
+  edit: 'ویرایش'
+  create: 'ساختن'
+  delete: 'حذف'
+  update: 'بروزرسانی'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "پر کردن رمز عبور اجباری است"
+            email:
+              taken: "ایمیل از قبل در سیستم وجود دارد"
+            login:
+              taken: "نام کاربری از قبل در سیستم وجود دارد"
+  flash:
+    has_error: 'انجام این عملیات به دلیل خطاهای زیر انجام نشد'
+    user:
+      updated: 'کاربر با موفقیت ویرایش شد'
+      deleted: 'کاربر با موفقیت حذف شد'
+      created: 'کاربر با موفقیت افزوده شد'
+      logouted: 'شما با موفقیت از پنل کاربری خارج شدید'
+  form:
+    login: 'ورود'
+    username: 'نام کاربری'
+    register: 'ثبت نام'
+    required: '(لازم)'
+    email: 'ایمیل'
+    family: 'نام خانوادگی'
+    name: 'نام'
+    website: 'وب سایت'
+    password: 'رمز عبور'
+    signup_msg: 'حساب کاربری ندارید‌ ؟ پس ثبت نام کنید'
+    login_faild_username_or_password: 'نام کابری و یا رمز عبور اشتباه است'
+    forgot_password: 'رمز عبور خود را فراموش کرده اید  ؟'
+    remember_me: ' مرا به خاطر بسپار'
+    create: 'افزودن'
+    id: 'کد شناسایی'
+    role: 'نقش'
+  menu:
+    home: 'خانه'
+    updates: 'بروزرسانی ها'
+    dashboard: 'پیشخوان'
+    new: 'جدید'
+    logout: 'بیرون رفتن'
+    users:
+      users: 'کاربران'
+      user: 'کاربر'
+      new: 'افزودن کاربر'
+      new_desc: 'کاربر جدیدی بسازید و آن را به این سایت اضافه کنید.'
+      profile: 'پروفایل'
+      your_profile: 'شناسه شما'
+    posts:
+      posts: 'نوشته ها'
+      add: 'افزودن نوشته'
+      categories: 'دسته ها'
+      tags: 'برچسب ها'
+
+    

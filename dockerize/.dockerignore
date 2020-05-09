@@ -1,0 +1,11 @@
+node_modules/*
+node_modules
+client/node_modules
+log/*
+.git*
+db/*.sqlite3
+db/*.sqlite3-journal
+log/*
+tmp/*
+Dockerfile
+README.rdoc
