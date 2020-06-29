@@ -38,6 +38,6 @@ class Admin::UsersController < AdminController
     @user = User.find_by_id(params[:id])
   end
   def user_params
-    params.require(:user).permit(:login,:email,:name,:family,:website,:password,metum: [])
+    params.require(:user).permit(:login,:email,:name,:family,:website,:password,metum_attributes: [:id,:key,:value])
   end
 end

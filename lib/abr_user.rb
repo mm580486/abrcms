@@ -133,7 +133,6 @@ class AbrUser < AbrCore
          HELPERS.content_tag(:form,{method: :post,action: ROUTER.admin_users_create_path}) {
 
             html = '<table class="form-table">'
-            
             @NewUserFields.map { |field|
                 html += '<tr>'
                 if field[:type] == 'input'
@@ -142,7 +141,7 @@ class AbrUser < AbrCore
                
                 elsif field[:type] == 'select'
                     html += "<th><label for='#{field[:id]}'>" + field[:label] + (I18n.t('form.required') if field[:required]).to_s + '</label></th>'
-                    html += "<td><select class='form-control' name='user[metum[][key][#{field[:id]}]]' id='#{field[:id]}'>#{ field[:values].map {|k| "<option value='#{k[:key]}'>#{k[:key]}</option>" }.join(' ')}</select></td>"
+                    html += "<td><select class='form-control' name='user[metum[]#{field[:id]}' id='#{field[:id]}'>#{ field[:values].map {|k| "<option value='#{k[:key]}'>#{k[:key]}</option>" }.join(' ')}</select></td>"
                     
                 elsif field[:type] == 'html'
 
@@ -151,9 +150,7 @@ class AbrUser < AbrCore
             }
             html += HELPERS.content_tag(:tr,HELPERS.content_tag(:th,HELPERS.content_tag(:button, I18n.t('form.create'), { type: 'submit', class: 'btn btn-primary', id: 'user_submit' })))
             html += '</table>'
-
             html += HELPERS.content_tag(:input, '', { type: 'hidden',value: form_auth_token,name: 'authenticity_token' })
-
             HELPERS.raw(html)
      
         }
